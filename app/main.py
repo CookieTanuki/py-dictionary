@@ -28,8 +28,7 @@ class Dictionary:
     def _calculate_index(self, key: Hashable) -> int:
         hash_value = hash(key)
         mask = self._capacity - 1
-        index = self._capacity & mask
-        # index = hash_value % self._capacity
+        index = hash_value & mask
         while (
             (node := self._hash_table[index]) is not None
             and not (node.hash_ == hash_value and node.key == key)
